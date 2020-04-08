@@ -66,7 +66,7 @@ namespace Box.V2.Request
 
                 while (true)
                 {
-                    HttpRequestMessage httpRequest = getHttpRequest(request, isMultiPartRequest, isBinaryRequest)
+                    HttpRequestMessage httpRequest = getHttpRequest(request, isMultiPartRequest, isBinaryRequest);
                     Debug.WriteLine(string.Format("RequestUri: {0}", httpRequest.RequestUri));
                     HttpResponseMessage response = await getResponse(request, isStream, httpRequest);
 

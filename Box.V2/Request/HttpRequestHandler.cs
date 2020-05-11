@@ -36,7 +36,7 @@ namespace Box.V2.Request
                 var isMultiPartRequest = request.GetType() == typeof(BoxMultiPartRequest);
                 var isBinaryRequest = request.GetType() == typeof(BoxBinaryRequest);
 
-                HttpRequestMessage httpRequest = getHttpRequest(request, isMultiPartRequest, isBinaryRequest);
+                HttpRequestMessage httpRequest = getHttpRequest(request, isMultiPartRequest, isBinaryRequest).ConfigureAwait(false);
                 Debug.WriteLine(string.Format("RequestUri: {0}", httpRequest.RequestUri));
                 HttpResponseMessage response = await getResponse(request, isStream, httpRequest);
                 BoxResponse<T> boxResponse = await getBoxResponse<T>(isStream, response);
